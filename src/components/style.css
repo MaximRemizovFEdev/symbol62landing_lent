@@ -1,0 +1,11 @@
+body {
+    padding: 0;
+    margin: 0;
+    background: #f8f8ff;
+    font-family: 'Open Sans', Arial, sans-serif;
+    overflow-x: hidden!important;
+}
+
+a {
+    text-decoration: none;
+}
