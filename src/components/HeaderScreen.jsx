@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import logo from "../images/logo.png"; // Импортируем логотип
+import RequestModal from "./RequestModal";
 
 const HeaderScreen = () => {
+  const [showModal, setShowModal] = useState(false);
+
   const handleOrderClick = () => {
-    console.log("открыта модалка");
+    setShowModal(true);
   };
 
   // Функция для обработки наведения/фокуса
@@ -98,6 +101,7 @@ const HeaderScreen = () => {
           </Col>
         </Row>
       </Container>
+      <RequestModal show={showModal} onHide={() => setShowModal(false)} />
     </section>
   );
 };

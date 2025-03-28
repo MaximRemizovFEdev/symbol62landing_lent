@@ -6,6 +6,12 @@ import Advantages from "../components/Advantages";
 import PhotoSlider from "../components/PhotoSlider";
 import Makets from "../components/Makets";
 import Price from "../components/Price";
+import WorkSteps from "../components/WorkSteps";
+import Workflow from "../components/Workflow";
+import FAQ from "../components/FAQ";
+import FaqHeader from "../components/FaqHeader";
+import Contact from "../components/Contact";
+import Footer from "../components/Footer";
 
 const pageStyles = {
   color: "#232129",
@@ -20,6 +26,12 @@ const IndexPage = () => {
       <PhotoSlider />
       <Makets />
       <Price />
+      <WorkSteps />
+      <Workflow />
+      <FaqHeader />
+      <FAQ />
+      <Contact />
+      <Footer />
     </main>
   );
 };
