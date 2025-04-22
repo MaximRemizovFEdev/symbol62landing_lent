@@ -14,6 +14,7 @@ import PinkLilac from "../images/color_lent/Розово-лиловый.png";
 import Silver from "../images/color_lent/Серебристый.png";
 import Blue from "../images/color_lent/Синий.png";
 import Purple from "../images/color_lent/Фиолетовый.png";
+import RequestModal from "./RequestModal";
 
 // Инициализация модулей Swiper
 SwiperCore.use([EffectCoverflow, Lazy]);
@@ -21,6 +22,8 @@ SwiperCore.use([EffectCoverflow, Lazy]);
 const Makets = () => {
   // Массив с изображениями для слайдов
   const slides = [Green, Red, Azure, Orchid, PinkLilac, Silver, Blue, Purple];
+
+  const [showModal, setShowModal] = useState(false);
 
   // Состояние для активного слайда
   const [swiper, setSwiper] = useState(null);
@@ -40,7 +43,7 @@ const Makets = () => {
 
   // Обработчик клика по кнопке "Заказать"
   const handleOrderClick = () => {
-    console.log("открыта модалка");
+    setShowModal(true);
   };
 
   // Обработчики для hover-эффектов кнопки
@@ -178,6 +181,7 @@ const Makets = () => {
         </Row>
 
         {/* Кнопка "Заказать" */}
+
         <Row className="justify-content-center" style={{ marginTop: "40px" }}>
           <Col xs="auto">
             <button
@@ -203,6 +207,7 @@ const Makets = () => {
           </Col>
         </Row>
       </Container>
+      <RequestModal show={showModal} onHide={() => setShowModal(false)} />
     </section>
   );
 };

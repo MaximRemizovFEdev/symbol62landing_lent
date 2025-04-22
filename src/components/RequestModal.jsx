@@ -27,12 +27,49 @@ const RequestModal = ({ show, onHide }) => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Отправка формы:', formData);
-    // Здесь будет логика отправки данных
-    onHide();
-    alert('Ваша заявка отправлена! Мы свяжемся с вами в ближайшее время.');
+    
+    try {
+      const token = "8198677796:AAGKdasotMqBW0-ymtjxkAcg3DhfpY1Srrs";//"ВАШ_ТОКЕН_TELEGRAM_BOT";
+      const chatId = "-4674647074"; //"ВАШ_CHAT_ID";
+      const message = `
+          📌 Новая заявка!\n
+          Имя: ${formData.name}\n
+          Телефон: ${formData.phone}\n
+          Согласие на обработку: ${formData.personalization ? 'Да' : 'Нет'}
+        `;
+  
+      const response = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: message,
+        }),
+      });
+  
+      if (!response.ok) {
+        throw new Error('Ошибка при отправке');
+      }
+  
+      // console.log('Данные отправлены в Telegram:', formData);
+      onHide();
+      alert('Ваша заявка отправлена! Мы свяжемся с вами в ближайшее время.');
+      
+      // Сброс формы после успешной отправки
+      setFormData({
+        name: '',
+        phone: '',
+        personalization: false
+      });
+  
+    } catch (error) {
+      console.error('Ошибка отправки:', error);
+      alert('Произошла ошибка при отправке. Пожалуйста, попробуйте ещё раз.');
+    }
   };
 
   const modalStyles = {

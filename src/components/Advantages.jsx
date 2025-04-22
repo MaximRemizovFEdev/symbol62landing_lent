@@ -1,19 +1,22 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
+import Marquee from "react-fast-marquee";
 
 const Advantages = () => {
   // Объект со стилями
   const styles = {
     advantages: {
       padding: "0 0 50px", // Отступы сверху и снизу
+      marginTop: "-28px",
     },
     advantages__title: {
-      fontSize: "48px", // Размер текста
+      fontSize: "78px", // Размер текста
       color: "#F5F2F1", // HEX для C:24 M:17 Y:18 K:3
       whiteSpace: "nowrap", // Текст в одну строку
       textAlign: "center", // Выравнивание по центру
       width: "100%", // Занимает всю ширину
       fontWeight: "bolder",
+      marginRight: "20px",
     },
     advantages__row: {
       display: "flex", // Flexbox для выравнивания высоты колонок
@@ -21,7 +24,7 @@ const Advantages = () => {
       marginTop: "40px",
     },
     advantages__leftCol: {
-      backgroundColor: "rgba(0, 0, 0, 0.3)", 
+      backgroundColor: "rgba(0, 0, 0, 0.3)",
       borderRadius: "30px", // Скругленные края
       display: "flex",
       justifyContent: "center",
@@ -51,14 +54,20 @@ const Advantages = () => {
 
   return (
     <section style={styles.advantages}>
+      {/* Первый Row: Заголовок */}
+      <Marquee
+        style={styles.marquee}
+        speed={50} // Скорость прокрутки
+        gradient={false} // Отключаем градиент по краям
+        pauseOnHover={false} // Пауза при наведении
+      >
+        {"КАЧЕСТВО СРОКИ ЦЕНА".split(" ").map((char, i) => (
+          <span key={i} style={styles.advantages__title}>
+            {char}
+          </span>
+        ))}
+      </Marquee>
       <Container>
-        {/* Первый Row: Заголовок */}
-        <Row>
-          <Col>
-            <div style={styles.advantages__title}>КАЧЕСТВО СРОКИ ЦЕНА</div>
-          </Col>
-        </Row>
-
         {/* Второй Row: Две колонки */}
         <Row style={styles.advantages__row}>
           {/* Левая колонка */}
@@ -74,22 +83,30 @@ const Advantages = () => {
               мы производим сувенирную продукцию
             </div>
 
-            <div style={styles.advantages__rightColBold}>Более 37 317 человек</div>
+            <div style={styles.advantages__rightColBold}>
+              Более 37 317 человек
+            </div>
             <div style={styles.advantages__rightColRegular}>
               носят текстильную продукцию нашего производства
             </div>
 
-            <div style={styles.advantages__rightColBold}>Собственное производство</div>
+            <div style={styles.advantages__rightColBold}>
+              Собственное производство
+            </div>
             <div style={styles.advantages__rightColRegular}>
               для комфортных цен и сроков под каждый заказ
             </div>
 
-            <div style={styles.advantages__rightColBold}>Оперативное изготовление</div>
+            <div style={styles.advantages__rightColBold}>
+              Оперативное изготовление
+            </div>
             <div style={styles.advantages__rightColRegular}>
               От согласования макета до готовности - 2 дня
             </div>
 
-            <div style={styles.advantages__rightColBold}>Качественные материалы</div>
+            <div style={styles.advantages__rightColBold}>
+              Качественные материалы
+            </div>
             <div style={styles.advantages__rightColRegular}>
               В производстве мы используем премиум ленты
             </div>

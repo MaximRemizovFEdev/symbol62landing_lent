@@ -1,24 +1,28 @@
 import React, { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { motion, AnimatePresence } from "framer-motion";
+import RequestModal from "./RequestModal";
 
 const faqItems = [
   {
     question: "Как сделать заказ?",
-    answer: "Оставьте свою заявку по форме (ссылка-попап), наш менеджер свяжется с вами, пришлет каталог и уточнит все детали"
+    answer: "Оставьте свою заявку по (ссылка-попап), наш менеджер свяжется с вами, пришлет каталог и уточнит все детали"
   },
   {
     question: "Получение заказа и доставка",
-    answer: "Забрать заказ вы можете в нашем офисе. Если вы находитесь в другом городе, согласовать доставку любой транспортной компанией вы сможете при оформлении заказа. Бесплатная доставка для заказов свыше 10 000 рублей."
+    answer:
+      "Забрать заказ вы можете в нашем офисе. Если вы находитесь в другом городе, согласовать доставку любой транспортной компанией вы сможете при оформлении заказа. Бесплатная доставка для заказов свыше 10 000 рублей.",
   },
   {
     question: "Оплата",
-    answer: "Оплатить заказ можно онлайн, переводом или по счету (для юридических лиц)"
+    answer:
+      "Оплатить заказ можно онлайн, переводом или по счету (для юридических лиц)",
   },
   {
     question: "Добавление персонализации",
-    answer: "Чтобы добавить персональных элементов, отметьте соответствующий пункт в форме (ссылка-попап) заявки. Наш менеджер свяжется с вами и учтет все ваши пожелания, а также подготовит дизайн-макет вашей будущей ленты."
-  }
+    answer:
+      "Чтобы добавить персональных элементов, отметьте соответствующий пункт в (ссылка-попап) заявки. Наш менеджер свяжется с вами и учтет все ваши пожелания, а также подготовит дизайн-макет вашей будущей ленты.",
+  },
 ];
 
 const styles = {
@@ -88,9 +92,44 @@ const styles = {
 
 const FAQ = () => {
   const [activeIndex, setActiveIndex] = useState(null);
+  const [showModal, setShowModal] = useState(false);
 
   const toggleItem = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
+  };
+
+  // Функция для обработки кликов по ссылкам в тексте
+  const handleTextClick = (e) => {
+    if (e.target.dataset.link === "popup") {
+      e.preventDefault();
+      setShowModal(true);
+    }
+  };
+
+  // Функция для замены (ссылка-попап) на кликабельный элемент
+  const renderAnswerWithLinks = (answer) => {
+    return answer.split("(ссылка-попап)").map((part, i) => (
+      <React.Fragment key={i}>
+        {part}
+        {i < answer.split("(ссылка-попап)").length - 1 && (
+          <a
+            href="#"
+            data-link="popup"
+            style={{
+              color: "#FF5708",
+              textDecoration: "underline",
+              cursor: "pointer",
+            }}
+            onClick={(e) => {
+              e.preventDefault();
+              setShowModal(true);
+            }}
+          >
+            форме
+          </a>
+        )}
+      </React.Fragment>
+    ));
   };
 
   return (
@@ -117,35 +156,45 @@ const FAQ = () => {
                   <span className="faq__icon" style={styles.faq__icon}>
                     <motion.span
                       className="faq__icon-line faq__icon-line--horizontal"
-                      style={{ ...styles.faq__iconLine, ...styles.faq__iconLineHorizontal }}
+                      style={{
+                        ...styles.faq__iconLine,
+                        ...styles.faq__iconLineHorizontal,
+                      }}
                       animate={{ rotate: activeIndex === index ? 90 : 0 }}
                       transition={{ duration: 0.3 }}
                     />
                     <motion.span
                       className="faq__icon-line faq__icon-line--vertical"
-                      style={{ ...styles.faq__iconLine, ...styles.faq__iconLineVertical }}
+                      style={{
+                        ...styles.faq__iconLine,
+                        ...styles.faq__iconLineVertical,
+                      }}
                       animate={{ opacity: activeIndex === index ? 0 : 1 }}
                       transition={{ duration: 0.3 }}
                     />
                   </span>
                 </motion.button>
-                
+
                 <AnimatePresence>
                   {activeIndex === index && (
                     <motion.div
                       className="faq__answer"
-                      style={{ ...styles.faq__answer, ...styles.faq__answerAnimated }}
+                      style={{
+                        ...styles.faq__answer,
+                        ...styles.faq__answerAnimated,
+                      }}
                       initial={{ height: 0, opacity: 0 }}
-                      animate={{ 
+                      animate={{
                         height: "auto",
                         opacity: 1,
                         paddingBottom: 24,
-                        paddingTop: 0
+                        paddingTop: 0,
                       }}
                       exit={{ height: 0, opacity: 0, padding: 0 }}
                       transition={{ duration: 0.3 }}
+                      onClick={handleTextClick}
                     >
-                      {item.answer}
+                      {renderAnswerWithLinks(item.answer)}
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -154,6 +203,7 @@ const FAQ = () => {
           </Col>
         </Row>
       </Container>
+      <RequestModal show={showModal} onHide={() => setShowModal(false)} />
     </div>
   );
 };

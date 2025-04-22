@@ -60,8 +60,8 @@ const Footer = () => {
       <Container>
         <Row>
           <Col md={4} className="mb-4">
-            <span style={footerStyles.footer__logo}>UniverSymbols</span>
-            <p>Производство и продажа сигнальных лент с 2010 года. Качественные материалы, надежные поставки.</p>
+            <span style={footerStyles.footer__logo}>Символика</span>
+            <p>Производство и продажа сигнальных лент с 2018 года. Качественные материалы, надежные поставки.</p>
           </Col>
 
           <Col md={4} className="mb-4">
@@ -97,7 +97,7 @@ const Footer = () => {
         <Row>
           <Col>
             <div style={footerStyles.footer__bottom}>
-              <div>© 2023 UniverSymbols. Все права защищены.</div>
+              <div>© {new Date().getFullYear()} Символика. Все права защищены.</div>
               <div>ИП Афонин | ИНН 623008765432 | ОГРНИП 123456789012345</div>
             </div>
           </Col>

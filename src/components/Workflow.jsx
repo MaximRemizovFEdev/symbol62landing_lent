@@ -1,125 +1,3 @@
-// import React from "react";
-// import { Container, Row, Col } from "react-bootstrap";
-// import {
-//   FaClipboardList,
-//   FaCheckCircle,
-//   FaCreditCard,
-//   FaPrint,
-//   FaTruck,
-// } from "react-icons/fa";
-
-// const steps = [
-//   {
-//     title: "Оформление заказа",
-//     description:
-//       "Определитесь с количеством и параметрами вашего заказа, заполнив форму",
-//     icon: <FaClipboardList />,
-//   },
-//   {
-//     title: "Согласование",
-//     description:
-//       "После получения вашей заявки наш менеджер обработает ваш заказ и пришлет всю детальную информацию и макеты на согласование",
-//     icon: <FaCheckCircle />,
-//   },
-//   {
-//     title: "Оплата",
-//     description:
-//       "Оплатить заказ можно онлайн, переводом или по счету (для юридических лиц)",
-//     icon: <FaCreditCard />,
-//   },
-//   {
-//     title: "Изготовление",
-//     description: "Приступаем к печати ваших лент",
-//     icon: <FaPrint />,
-//   },
-//   {
-//     title: "Получение заказа или доставка",
-//     description:
-//       "Забрать заказ вы можете в нашем офисе. Если вы находитесь в другом городе, согласовать доставку любой транспортной компанией вы сможете при оформлении заказа. Бесплатная доставка для заказов свыше 10 000 рублей.",
-//     icon: <FaTruck />,
-//   },
-// ];
-
-// const styles = {
-//   workflowContainer: {
-//     marginTop: "50px",
-//     marginBottom: "50px",
-//   },
-//   workflowStep: {
-//     textAlign: "center",
-//     padding: "20px",
-//     border: "1px solid #e0e0e0",
-//     borderRadius: "8px",
-//     backgroundColor: "#f9f9f9",
-//     transition: "transform 0.3s",
-//     cursor: "pointer",
-//   },
-//   workflowStepHover: {
-//     transform: "translateY(-5px)",
-//     boxShadow: "0 4px 15px rgba(0, 0, 0, 0.1)",
-//   },
-//   workflowIcon: {
-//     fontSize: "40px",
-//     color: "#FF5708",
-//   },
-//   workflowTitle: {
-//     fontSize: "1.5rem",
-//     margin: "10px 0",
-//     fontWeight: "bold",
-//   },
-//   workflowDescription: {
-//     fontSize: "1rem",
-//     color: "#666",
-//   },
-//   workflowArrow: {
-//     width: "2px",
-//     height: "50px",
-//     backgroundColor: "#FF5708",
-//     margin: "20px auto",
-//   },
-// };
-
-// const Workflow = () => {
-//   return (
-//     <Container>
-//       <Row>
-//         <Col>
-//           {steps.map((step, index) => (
-//             <div className="col-md-4 workflow__step" key={index}>
-//               <div
-//                 style={{
-//                   ...styles.workflowStep,
-//                   ...(index === 0 ? {} : styles.workflowStepHover), // Применяем эффект при наведении
-//                 }}
-//                 onMouseEnter={(e) => {
-//                   e.currentTarget.style.transform =
-//                     styles.workflowStepHover.transform;
-//                   e.currentTarget.style.boxShadow =
-//                     styles.workflowStepHover.boxShadow;
-//                 }}
-//                 onMouseLeave={(e) => {
-//                   e.currentTarget.style.transform = "none";
-//                   e.currentTarget.style.boxShadow = "none";
-//                 }}
-//                 className="workflow__step-content"
-//               >
-//                 <div style={styles.workflowIcon}>{step.icon}</div>
-//                 <div className="workflow__content">
-//                   <h3 style={styles.workflowTitle}>{step.title}</h3>
-//                   <p style={styles.workflowDescription}>{step.description}</p>
-//                 </div>
-//               </div>
-//               {index < steps.length - 1 && <div style={styles.workflowArrow} />}
-//             </div>
-//           ))}
-//         </Col>
-//       </Row>
-//     </Container>
-//   );
-// };
-
-// export default Workflow;
-
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import {
@@ -331,39 +209,45 @@ const StepConnector = ({ from, to, isMobile, isTablet }) => {
 
 const Workflow = () => {
   const [dimensions, setDimensions] = React.useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
+    width: typeof window !== "undefined" ? window.innerWidth : 0,
+    height: typeof window !== "undefined" ? window.innerHeight : 0,
+  })
   const [stepPositions, setStepPositions] = React.useState([]);
   const stepRefs = React.useRef(steps.map(() => React.createRef()));
 
   React.useEffect(() => {
+    // Этот код выполняется только на клиенте
     const handleResize = () => {
       setDimensions({
         width: window.innerWidth,
         height: window.innerHeight,
-      });
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+      })
+    }
+    
+    window.addEventListener("resize", handleResize)
+    handleResize() // Инициализация при монтировании
+    
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
 
   React.useEffect(() => {
-    const positions = stepRefs.current.map(ref => {
-      if (ref.current) {
-        const rect = ref.current.getBoundingClientRect();
-        return {
-          x: rect.left + rect.width / 2,
-          y: rect.top,
-          width: rect.width,
-          height: rect.height,
-        };
-      }
-      return { x: 0, y: 0, width: 0, height: 0 };
-    });
-    setStepPositions(positions);
-  }, [dimensions]);
+    // Только если refs существуют
+    if (stepRefs.current.some(ref => ref.current)) {
+      const positions = stepRefs.current.map(ref => {
+        if (ref.current) {
+          const rect = ref.current.getBoundingClientRect()
+          return {
+            x: rect.left + rect.width / 2,
+            y: rect.top,
+            width: rect.width,
+            height: rect.height,
+          }
+        }
+        return { x: 0, y: 0, width: 0, height: 0 }
+      })
+      setStepPositions(positions)
+    }
+  }, [dimensions])
 
   const isMobile = dimensions.width < 768;
   const isTablet = dimensions.width >= 768 && dimensions.width < 992;
