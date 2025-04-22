@@ -30,8 +30,23 @@ SwiperCore.use([Autoplay, EffectCoverflow, Lazy]);
 const PhotoSlider = () => {
   // Массив с изображениями для слайдов
   const slides = [
-    One, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten,
-    Eleven, Twelve, Thirteen, Fourteen, Fifteen, Sixteen, Seventeen
+    One,
+    Two,
+    Three,
+    Four,
+    Five,
+    Six,
+    Seven,
+    Eight,
+    Nine,
+    Ten,
+    Eleven,
+    Twelve,
+    Thirteen,
+    Fourteen,
+    Fifteen,
+    Sixteen,
+    Seventeen,
   ];
 
   return (
@@ -39,24 +54,27 @@ const PhotoSlider = () => {
       <Container>
         {/* Слайдер Swiper */}
         <Swiper
-          effect="coverflow" // Эффект coverflow
-          grabCursor={true} // Курсор в виде руки
-          centeredSlides={true} // Центрирование текущего слайда
-          slidesPerView="auto" // Автоматическое количество видимых слайдов
-          coverflowEffect={{
-            rotate: 0, // Угол поворота слайдов
-            stretch: 0, // Растяжение слайдов
-            depth: 100, // Глубина эффекта
-            modifier: 2, // Модификатор эффекта
-            slideShadows: false, // Отключение теней
-          }}
+          effect="coverflow"
+          grabCursor={true}
+          centeredSlides={true}
+          slidesPerView="auto"
+          // coverflowEffect={{
+          //   rotate: 5, // Небольшой поворот для лучшего эффекта
+          //   stretch: -20, // Слегка сжимаем боковые слайды
+          //   depth: 300, // Увеличиваем глубину
+          //   modifier: 1.5, // Более плавный эффект
+          //   slideShadows: false,
+          // }}
           autoplay={{
-            delay: 1000, // Автоматическая прокрутка каждую секунду
-            disableOnInteraction: true, // Продолжать автопрокрутку после взаимодействия
+            delay: 2000, // Более разумный интервал (3 сек)
+            disableOnInteraction: true, // Продолжать после взаимодействия
+            pauseOnMouseEnter: false, // Пауза при наведении
           }}
-          loop={true} // Бесконечная прокрутка
-          lazy={true} // Включение ленивой загрузки
-          preloadImages={false} // Отключение предзагрузки всех изображений
+          speed={800} // Плавная скорость анимации
+          loop={true}
+          lazy={true}
+          preloadImages={false}
+          spaceBetween={30} // Добавляем отступ между слайдами
         >
           {slides.map((slide, index) => (
             <SwiperSlide key={index}>
