@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaVk } from 'react-icons/fa';
+import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaVk, FaTelegram } from 'react-icons/fa';
 
 const Footer = () => {
   const footerStyles = {
@@ -61,7 +61,7 @@ const Footer = () => {
         <Row>
           <Col md={4} className="mb-4">
             <span style={footerStyles.footer__logo}>Символика</span>
-            <p>Производство и продажа сигнальных лент с 2018 года. Качественные материалы, надежные поставки.</p>
+            <p>Производство лент выпускника с 2017 года. Качественные материалы, короткие сроки. </p>
           </Col>
 
           <Col md={4} className="mb-4">
@@ -70,7 +70,7 @@ const Footer = () => {
               <FaPhone style={footerStyles.footer__icon} /> +7 (906) 543-53-69
             </a>
             <a href="mailto:info@universymbols.ru" style={footerStyles.footer__link}>
-              <FaEnvelope style={footerStyles.footer__icon} /> info@universymbols.ru
+              <FaEnvelope style={footerStyles.footer__icon} /> symb62@yandex.ru
             </a>
             <div style={footerStyles.footer__link}>
               <FaMapMarkerAlt style={footerStyles.footer__icon} /> Рязань, ул. Радищева, 43
@@ -82,6 +82,14 @@ const Footer = () => {
               style={footerStyles.footer__link}
             >
               <FaVk style={footerStyles.footer__icon} /> Мы ВКонтакте
+            </a>
+            <a 
+              href="https://t.me/symbol62" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              style={footerStyles.footer__link}
+            >
+              <FaTelegram style={footerStyles.footer__icon} /> Мы в Телеграм
             </a>
           </Col>
 
@@ -98,7 +106,7 @@ const Footer = () => {
           <Col>
             <div style={footerStyles.footer__bottom}>
               <div>© {new Date().getFullYear()} Символика. Все права защищены.</div>
-              <div>ИП Афонин | ИНН 623008765432 | ОГРНИП 123456789012345</div>
+              <div>ИП Афонин Д.О. | ИНН 623012493394 | ОГРНИП 319623400053957</div>
             </div>
           </Col>
         </Row>

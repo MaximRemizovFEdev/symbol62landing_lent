@@ -133,7 +133,7 @@ const FAQ = () => {
   };
 
   return (
-    <div className="faq" style={styles.faq}>
+    <div id="delivery" className="faq" style={styles.faq}>
       <Container>
         <Row>
           <Col style={styles.faq__container}>

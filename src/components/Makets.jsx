@@ -6,14 +6,14 @@ import "swiper/css"; // Основные стили Swiper
 import "swiper/css/bundle"; // Стили для эффекта coverflow
 
 // Импортируем изображения
-import Green from "../images/color_lent/Зеленый.png";
-import Red from "../images/color_lent/Красный.png";
-import Azure from "../images/color_lent/Лазурный.png";
-import Orchid from "../images/color_lent/Орхидейный.png";
-import PinkLilac from "../images/color_lent/Розово-лиловый.png";
-import Silver from "../images/color_lent/Серебристый.png";
-import Blue from "../images/color_lent/Синий.png";
-import Purple from "../images/color_lent/Фиолетовый.png";
+import Green from "../images/color_lent/Зеленый_8.jpg";
+import Red from "../images/color_lent/Красный_9.jpg";
+// import Azure from "../images/color_lent/Лазурный.png";
+// import Orchid from "../images/color_lent/Орхидейный.png";
+import PinkLilac from "../images/color_lent/Розовый_5.jpg";
+import Silver from "../images/color_lent/Серебристый_3.jpg";
+import Blue from "../images/color_lent/Синий_7.jpg";
+import Purple from "../images/color_lent/Фиолетовый_4.jpg";
 import RequestModal from "./RequestModal";
 
 // Инициализация модулей Swiper
@@ -21,7 +21,7 @@ SwiperCore.use([EffectCoverflow, Lazy]);
 
 const Makets = () => {
   // Массив с изображениями для слайдов
-  const slides = [Green, Red, Azure, Orchid, PinkLilac, Silver, Blue, Purple];
+  const slides = [Green, Red, PinkLilac, Silver, Blue, Purple];
 
   const [showModal, setShowModal] = useState(false);
 
@@ -33,8 +33,6 @@ const Makets = () => {
   const colors = [
     "#4CAF50", // Зеленый
     "#F44336", // Красный
-    "#03A9F4", // Лазурный
-    "#9C27B0", // Орхидейный
     "#E91E63", // Розово-лиловый
     "#9E9E9E", // Серебристый
     "#2196F3", // Синий
@@ -60,7 +58,7 @@ const Makets = () => {
   };
 
   return (
-    <section style={{ padding: "50px 0" }}>
+    <section id="products" style={{ padding: "50px 0" }}>
       <Container>
         {/* Заголовок */}
         <Row>

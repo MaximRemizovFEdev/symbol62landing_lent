@@ -1,10 +1,27 @@
 import React, { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import logo from "../images/logo.png"; // Импортируем логотип
+import bgPic from "../images/bg1.png"; // Импортируем background
 import RequestModal from "./RequestModal";
 
 const HeaderScreen = () => {
   const [showModal, setShowModal] = useState(false);
+
+  const styles = {
+    bg: {
+      position: "absolute",
+      top: "0",
+      right: "0",
+      bottom: "0",
+      left: "0",
+      zIndex: 1,
+      objectFit: "cover",
+    },
+    content: {
+      position: "relative",
+      zIndex: 2,
+    },
+  };
 
   const handleOrderClick = () => {
     setShowModal(true);
@@ -30,9 +47,13 @@ const HeaderScreen = () => {
         backgroundColor: "#FF5708",
         width: "100%",
         padding: "50px 0", // Отступы сверху и снизу для красоты
+        overflow: "hidden",
+        position: "relative",
+        minHeight: "100vh",
       }}
     >
-      <Container fluid="md">
+      <img style={styles.bg} src={bgPic} alt="символика" />
+      <Container fluid="md" style={styles.content}>
         <Row>
           <Col>
             {/* Лого в правом углу */}
@@ -53,7 +74,7 @@ const HeaderScreen = () => {
             {/* Заголовки и кнопка */}
             <div
               style={{
-                textAlign: "center",
+                textAlign: "left",
                 marginTop: "50px", // Отступ от верхней границы контейнера
               }}
             >

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import { FaPhone, FaMapMarkerAlt, FaClock, FaVk, FaUserTie } from 'react-icons/fa';
+import { FaPhone, FaMapMarkerAlt, FaClock, FaVk, FaUserTie, FaTelegram } from 'react-icons/fa';
 
 const Contact = () => {
   const styles = {
@@ -96,6 +96,21 @@ const Contact = () => {
               </div>
               
               <div style={styles.contact__item}>
+                <FaTelegram style={styles.contact__icon} />
+                <div style={styles.contact__text}>
+                  <strong>Группа ВКонтакте:</strong><br />
+                  <a 
+                    href="https://t.me/symbol62" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    style={styles.contact__link}
+                  >
+                    t.me/symbol62
+                  </a>
+                </div>
+              </div>
+              
+              <div style={styles.contact__item}>
                 <FaClock style={styles.contact__icon} />
                 <div style={styles.contact__text}>
                   <strong>Часы работы:</strong><br />
@@ -107,8 +122,8 @@ const Contact = () => {
                 <FaUserTie style={styles.contact__icon} />
                 <div style={styles.contact__text}>
                   <strong>Реквизиты:</strong><br />
-                  ИП Афонин<br />
-                  ИНН: 623008765432
+                  ИП Афонин Д.О.<br />
+                  ИНН: 623012493394
                 </div>
               </div>
             </div>

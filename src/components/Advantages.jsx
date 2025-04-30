@@ -1,67 +1,82 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Marquee from "react-fast-marquee";
+import pic from "../images/pic1.png"; // Импортируем background
 
 const Advantages = () => {
-  // Объект со стилями
   const styles = {
     advantages: {
-      padding: "0 0 50px", // Отступы сверху и снизу
+      padding: "0 0 50px",
       marginTop: "-28px",
     },
     advantages__title: {
-      fontSize: "78px", // Размер текста
-      color: "#F5F2F1", // HEX для C:24 M:17 Y:18 K:3
-      whiteSpace: "nowrap", // Текст в одну строку
-      textAlign: "center", // Выравнивание по центру
-      width: "100%", // Занимает всю ширину
+      fontSize: "78px",
+      color: "#F5F2F1",
+      whiteSpace: "nowrap",
+      textAlign: "center",
+      width: "100%",
       fontWeight: "bolder",
       marginRight: "20px",
     },
     advantages__row: {
-      display: "flex", // Flexbox для выравнивания высоты колонок
-      alignItems: "stretch", // Растягиваем колонки на всю высоту
+      display: "flex",
+      alignItems: "stretch",
       marginTop: "40px",
     },
     advantages__leftCol: {
       backgroundColor: "rgba(0, 0, 0, 0.3)",
-      borderRadius: "30px", // Скругленные края
+      borderRadius: "30px",
       display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      // height: "100%", // Высота как у правой колонки
+      flexDirection: "column", // Добавлено для вертикального расположения
+      position: "relative", // Для позиционирования изображения
+      overflow: "hidden",
+      height: "70vh",
+      padding: 0, // Убираем внутренние отступы колонки
     },
     advantages__leftColText: {
-      fontSize: "32px", // Размер текста
-      color: "#000000", // Черный цвет
-      fontWeight: "bold", // Жирный текст
+      fontSize: "32px",
+      color: "#000000",
+      fontWeight: "bold",
+      padding: "20px", // Добавляем отступы для текста
+      zIndex: 2, // Текст поверх изображения
+      position: "relative", // Для z-index
+      backgroundColor: "rgba(255, 255, 255, 0.7)", // Фон для лучшей читаемости
+      borderRadius: "30px 30px 0 0", // Скругляем только верхние углы
+    },
+    advantages__leftColImage: {
+      width: "100%",
+      height: "100%",
+      objectFit: "cover", // Заполняет пространство с сохранением пропорций
+      position: "absolute", // Абсолютное позиционирование
+      top: 0,
+      left: 0,
     },
     advantages__rightCol: {
-      paddingLeft: "40px", // Отступ слева
+      paddingLeft: "40px",
     },
     advantages__rightColBold: {
-      fontSize: "32px", // Размер текста
-      color: "#FF5708", // Оранжевый цвет
-      fontWeight: "bold", // Жирный текст
-      marginBottom: "1px", // Отступ снизу
+      fontSize: "32px",
+      color: "#FF5708",
+      fontWeight: "bold",
+      marginBottom: "1px",
     },
     advantages__rightColRegular: {
-      fontSize: "16px", // Размер текста
-      color: "#000000", // Черный цвет
-      marginBottom: "16px", // Отступ снизу
+      fontSize: "16px",
+      color: "#000000",
+      marginBottom: "16px",
     },
   };
 
   return (
-    <section style={styles.advantages}>
+    <section id="about" style={styles.advantages}>
       {/* Первый Row: Заголовок */}
       <Marquee
         style={styles.marquee}
-        speed={50} // Скорость прокрутки
+        speed={150} // Скорость прокрутки
         gradient={false} // Отключаем градиент по краям
         pauseOnHover={false} // Пауза при наведении
       >
-        {"КАЧЕСТВО СРОКИ ЦЕНА".split(" ").map((char, i) => (
+        {"КАЧЕСТВО СРОКИ ЦЕНА КАЧЕСТВО СРОКИ ЦЕНА".split(" ").map((char, i) => (
           <span key={i} style={styles.advantages__title}>
             {char}
           </span>
@@ -73,7 +88,8 @@ const Advantages = () => {
           {/* Левая колонка */}
           <Col md={2}></Col>
           <Col md={4} style={styles.advantages__leftCol}>
-            <div style={styles.advantages__leftColText}>Преимущества</div>
+            {/* <div style={styles.advantages__leftColText}>Преимущества</div> */}
+            <img src={pic} alt="Преимущества" style={styles.advantages__leftColImage} />
           </Col>
 
           {/* Правая колонка */}
