@@ -1,11 +1,11 @@
 import * as React from "react";
-import HeaderScreen from "../components/HeaderScreen";
+import HeaderScreen from "../components/HeaderScreen/HeaderScreen";
 import "../components/style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Advantages from "../components/Advantages";
 import PhotoSlider from "../components/PhotoSlider";
 import Makets from "../components/Makets";
-import Price from "../components/Price";
+import Price from "../components/Price/Price";
 import WorkSteps from "../components/WorkSteps";
 import Workflow from "../components/Workflow";
 import FAQ from "../components/FAQ";

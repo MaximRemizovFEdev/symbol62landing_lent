@@ -98,7 +98,7 @@ const Contact = () => {
               <div style={styles.contact__item}>
                 <FaTelegram style={styles.contact__icon} />
                 <div style={styles.contact__text}>
-                  <strong>Группа ВКонтакте:</strong><br />
+                  <strong>Группа в Телеграмм:</strong><br />
                   <a 
                     href="https://t.me/symbol62" 
                     target="_blank" 

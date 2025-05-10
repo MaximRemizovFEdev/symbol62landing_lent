@@ -2,6 +2,7 @@ import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Marquee from "react-fast-marquee";
 import pic from "../images/pic1.png"; // Импортируем background
+import "./chaotic-animation.css";
 
 const Advantages = () => {
   const styles = {
@@ -89,7 +90,12 @@ const Advantages = () => {
           <Col md={2}></Col>
           <Col md={4} style={styles.advantages__leftCol}>
             {/* <div style={styles.advantages__leftColText}>Преимущества</div> */}
-            <img src={pic} alt="Преимущества" style={styles.advantages__leftColImage} />
+            <img
+              src={pic}
+              alt="Преимущества"
+              className="chaotic-motion"
+              style={styles.advantages__leftColImage}
+            />
           </Col>
 
           {/* Правая колонка */}

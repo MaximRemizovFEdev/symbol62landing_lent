@@ -1,0 +1,131 @@
+.bg {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    object-fit: cover;
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+}
+
+.mainTitle {
+    font-size: 78px;
+    color: #FFFFFF;
+    margin-top: 0;
+    line-height: 1.2;
+}
+.subTitle {
+    font-size: 48px;
+    color: #FFFFFF;
+}
+.titleWrapper {
+    text-align: left;
+    margin-top: 50px;
+}
+
+@media (max-width: 1024px) {
+    .bg {
+        left: -100px
+    }
+    .titleWrapper {
+        margin-top: 250px;
+    }
+}
+
+@media (max-width: 768px) {
+    .mainTitle {
+        font-size: 52px;
+    }
+    .subTitle {
+        font-size: 38px;
+    }
+}
+
+@media (max-width: 576px) {
+    .mainTitle {
+        font-size: 42px;
+    }
+    .subTitle {
+        font-size: 28px;
+    }
+}
+
+/* -----------------------Header----------------------- */
+
+/* Фиксированный хедер */
+.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1030;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px 0;
+  }
+  
+  /* Стили для навбара */
+  .header-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+  }
+  
+  /* Стили для ссылок */
+  .nav-link {
+    color: #333;
+    font-weight: 500;
+    padding: 8px 15px;
+    margin: 0 5px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .fixed-header .nav-link:hover,
+  .fixed-header .nav-link:focus,
+  .fixed-header .nav-link.active {
+    color: #FF5708 !important;
+  }
+  
+  /* Бургер кнопка */
+  .burger-button {
+    background: none;
+    border: none;
+    color: #333;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .burger-button:hover {
+    color: #FF5708;
+  }
+  
+  /* Место под лого */
+  .logo-placeholder {
+    width: 150px;
+    height: 40px;
+    margin-left: auto;
+  }
+  
+  /* Оффканвас меню */
+  .offcanvas-header {
+    border-bottom: 1px solid #eee;
+  }
+  
+  /* Адаптивные стили */
+  @media (max-width: 1023.98px) {
+    .header-navbar {
+      flex-wrap: nowrap;
+    }
+    
+    .nav-link {
+      padding: 10px 0;
+      margin: 5px 0;
+    }
+  }

@@ -1,0 +1,35 @@
+@keyframes chaotic-movement {
+    0% {
+      transform: translate(0, 0);
+    }
+    20% {
+      transform: translate(3px, -2px);
+    }
+    40% {
+      transform: translate(-4px, 5px);
+    }
+    60% {
+      transform: translate(2px, -5px);
+    }
+    80% {
+      transform: translate(-3px, 4px);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+  
+  .chaotic-motion {
+    animation: chaotic-movement 4s infinite ease-in-out;
+    will-change: transform; /* Оптимизация для браузера */
+  }
+  
+  /* Вариант с более резкими движениями */
+  .chaotic-motion-strong {
+    animation: chaotic-movement 2s infinite ease-in-out;
+  }
+  
+  /* Вариант для более плавных движений */
+  .chaotic-motion-soft {
+    animation: chaotic-movement 6s infinite ease-in-out;
+  }

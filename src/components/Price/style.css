@@ -1,0 +1,80 @@
+/* Блок price */
+.price {
+    padding: 50px 0;
+    width: 100%;
+  }
+  
+  /* Элемент title внутри price */
+  .price__title {
+    font-size: 42px;
+    color: #FF5708;
+    margin-top: 0;
+    text-align: center;
+    line-height: 1.2;
+  }
+  
+  /* Модификатор для большого заголовка */
+  .price__title--large {
+    font-size: 78px;
+  }
+  
+  /* Контейнер вкладок */
+  .price__tabs {
+    border: 2px solid #FF5708;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  /* Стили для вкладок */
+  .price__tabs .nav-link {
+    color: #FF5708;
+    background-color: white;
+    border: none;
+    padding: 10px 20px;
+    font-weight: 500;
+  }
+  
+  .price__tabs .nav-link.active {
+    color: white;
+    background-color: #FF5708;
+    border-top-left-radius: unset;
+    border-top-right-radius: unset;
+  }
+  
+  /* Таблица */
+  .price__table {
+    background-color: #F5F2F1;
+    color: #333;
+    border-color: #ddd;
+    margin-top: -1px;
+  }
+  
+  .price__table th {
+    /* background-color: #FF5708;
+    color: white; */
+    border-color: white;
+  }
+  
+  /* Адаптивные стили */
+  @media (min-width: 768px) {
+    .price__title {
+      font-size: 62px;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .price__title {
+      font-size: 78px;
+    }
+    
+    .price__tabs .nav-link {
+      padding: 15px 30px;
+      font-size: 18px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .price .nav-item {
+      width: 100%;
+    }
+  }

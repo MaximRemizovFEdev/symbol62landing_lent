@@ -1,27 +1,13 @@
 import React, { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import logo from "../images/logo.png"; // Импортируем логотип
-import bgPic from "../images/bg1.png"; // Импортируем background
-import RequestModal from "./RequestModal";
+import logo from "../../images/logo.png"; // Импортируем логотип
+import bgPic from "../../images/bg1.png"; // Импортируем background
+import RequestModal from "../RequestModal";
+import "./style.css";
+import Header from "./Header";
 
 const HeaderScreen = () => {
   const [showModal, setShowModal] = useState(false);
-
-  const styles = {
-    bg: {
-      position: "absolute",
-      top: "0",
-      right: "0",
-      bottom: "0",
-      left: "0",
-      zIndex: 1,
-      objectFit: "cover",
-    },
-    content: {
-      position: "relative",
-      zIndex: 2,
-    },
-  };
 
   const handleOrderClick = () => {
     setShowModal(true);
@@ -52,49 +38,15 @@ const HeaderScreen = () => {
         minHeight: "100vh",
       }}
     >
-      <img style={styles.bg} src={bgPic} alt="символика" />
-      <Container fluid="md" style={styles.content}>
+      <Header />
+      <img className={"bg"} src={bgPic} alt="символика" />
+      <Container fluid="md" className={"content"}>
         <Row>
           <Col>
-            {/* Лого в правом углу */}
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "flex-end",
-                marginTop: "30px", // Отступ от верхней границы контейнера
-              }}
-            >
-              <img
-                src={logo} // Замените на путь к вашему лого
-                alt="Лого"
-                style={{ width: "100px", height: "50px" }}
-              />
-            </div>
-
             {/* Заголовки и кнопка */}
-            <div
-              style={{
-                textAlign: "left",
-                marginTop: "50px", // Отступ от верхней границы контейнера
-              }}
-            >
-              <h1
-                style={{
-                  fontSize: "78px",
-                  color: "#FFFFFF",
-                  marginTop: "0",
-                }}
-              >
-                Ленты выпускника
-              </h1>
-              <h2
-                style={{
-                  fontSize: "48px",
-                  color: "#FFFFFF",
-                }}
-              >
-                с индивидуальным дизайном
-              </h2>
+            <div className={"titleWrapper"}>
+              <h1 className={"mainTitle"}>Ленты выпускника</h1>
+              <h2 className={"subTitle"}>с индивидуальным дизайном</h2>
 
               {/* Кнопка "Заказать" */}
               <button
